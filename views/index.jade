@@ -1,0 +1,59 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.css')
+    style
+      body {
+        padding-top: 60px;
+      }
+  body
+    #uploadModal.modal.fade.hide
+      .modal-header
+        a.close(data-dismiss="modal") x
+        h3 UPLOAD
+      .modal-body
+        p
+          .alert.alert-info ファイルを選択してください
+          form(action="/upload", method="post", enctype="multipart/form-data")
+            input(type="file", name="upfile")
+            input.btn(type="submit", value="Send")
+      .modal-footer
+        a.btn.btn-primary(href="#", data-dismiss="modal") Close
+
+
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand toppan
+          .nav-collapse.collapse
+            ul.nav
+              li
+                a hoge1
+              li
+                a hoge2
+              li
+                a hoge3
+  
+    .container
+      .hero-unit
+        h1 Upload Test
+        p これはuploadテスト用です。ほげほげ
+        a(data-toggle="modal", href="#uploadModal")
+          p.btn.btn-primary.btn-large UPLOAD
+
+      .row
+        for file in files
+          .well.well-small
+            p= file.orgname
+            p= file.tmpname
+          
+  
+    script(src='http://code.jquery.com/jquery.min.js')
+    script(src='/bootstrap/js/bootstrap.js')
+
